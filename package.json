@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "lodash": "^4.17.5",
+    "parse-geocoder": "^0.1.0",
     "request": "^2.83.0",
     "speedtest-net": "^1.4.2"
   }
