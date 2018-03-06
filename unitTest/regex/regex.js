@@ -8,24 +8,24 @@ var extractColorNumber = (x) => {
     rexPer = /(rgb)\((\d*(\b([0-9]|[0-9][0-9]|100)\b)+%[,\s]+){2,3}\s+\d*(\b([0-9]|[0-9][0-9]|100)\b)+%?\)/i;
     if (rexHex.test(x) === true) {
         var hex = x.match(rexHex);
-        return 'hex: ' + hex[0]
+        return hexToHex(hex[0])
     } else if (rexDec.test(x) === true) {
         var dec = x.match(rexDec);
-        return 'dec: ' + dec[0] + ' hex: ' + rgbToHex(dec)
+        return rgbToHex(dec)
     } else if (rexPer.test(x) === true) {
         var per = x.match(rexPer);
-        return 'per: ' + per[0] + ' hex: ' + rgbpToHex(per)
+        return rgbpToHex(per)
     } else {
         return null
     }
 
     // rewrite hex to hex6
-    function hexToHex(hexString) { // FFF
+    function hexToHex(hexString) {
         // validate hex
-        if (hexString.length != 6 ) {
+        if (hexString.length < 6 ) {
             // make it 6 by double it
-            strArr = split(hexString)
-            return 'FFFFFF';
+            strArr = hexString.split('')
+            return `#${strArr[1]}${strArr[1]}${strArr[2]}${strArr[2]}${strArr[3]}${strArr[3]}`
         } else {
             return hexString;
         }
@@ -51,14 +51,14 @@ var extractColorNumber = (x) => {
         return "#" + ((1 << 24) + (newDec[0] << 16) + (newDec[1] << 8) + (newDec[2])).toString(16).slice(1);
     }
 };
-// converting to hex ?
-// the input, first css specifier ?
-console.log(extractColorNumber('hello this is css spec #FFF xxx #ff00ff #fff')) // #FFF
+
+
+console.log(extractColorNumber('hello this is css spec #F2F xxx #ff00ff #fff')) // #FFF
 console.log(extractColorNumber('#ff00ff')) // true
 console.log(extractColorNumber('rgb(1%, 100%, 90%)')) // true
 console.log(extractColorNumber('rgb(3,255,230)')) // true
-console.log(extractColorNumber('#FFFF')) // is there a FFFF? should it be null ?
+console.log(extractColorNumber('#ff22cc')) // should return FFFFFF
 console.log(extractColorNumber('rgb(1, 100, 256)')) // null
 console.log(extractColorNumber('RGB(101%, 100%, 10%)')) // null
-console.log(extractColorNumber(' ma li pu RGB(3%, 22%, 19%)'))
-console.log(extractColorNumber(' RGB(3%, 22%, 19%) '))
+console.log(extractColorNumber(' ma li pu RGB(3%, 22%, 19%)')) // #083931
+console.log(extractColorNumber(' RGB(3%, 22%, 19%) ')) // 083931
