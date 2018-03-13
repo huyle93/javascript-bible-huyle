@@ -23,9 +23,12 @@ var extractPhone = (num) => {
 }
 
 console.log(isPhone('(603)862-2506')); // true
+console.log(isPhone('603 862-2506')); // true
+console.log(isPhone('6038622506')); // true
 console.log(isPhone('(603)862-mike')); // false
 console.log(isPhone('this is cell (603)862-2506')); // false
 console.log(containsPhone('is it your number 603-862-2506 ?')); // true
+console.log(containsPhone('is it your number 603-862-2x06 ?')); // false
 console.log(extractPhone('is it your number 603 862 6200 ?')); // "(603) 862-6200"
 console.log(extractPhone('is it your number 603 862 6x00 ?')); // null
-console.log(extractPhone('603 862 6200'));
+console.log(extractPhone('603 862 6200')); // "(603) 862-6200"

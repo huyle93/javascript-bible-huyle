@@ -1,4 +1,4 @@
-apiKey = 'plNOfI4m8eLRGut1GFQ8k01VjNKA5UzI'
+apiKey = ''
 let request = require('request')
 
 let options = {

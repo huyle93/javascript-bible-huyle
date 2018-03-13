@@ -53,12 +53,12 @@ var extractColorNumber = (x) => {
 };
 
 
-console.log(extractColorNumber('hello this is css spec #F2F xxx #ff00ff #fff')) // #FFF
-console.log(extractColorNumber('#ff00ff')) // true
-console.log(extractColorNumber('rgb(1%, 100%, 90%)')) // true
-console.log(extractColorNumber('rgb(3,255,230)')) // true
-console.log(extractColorNumber('#ff22cc')) // should return FFFFFF
-console.log(extractColorNumber('rgb(1, 100, 256)')) // null
-console.log(extractColorNumber('RGB(101%, 100%, 10%)')) // null
-console.log(extractColorNumber(' ma li pu RGB(3%, 22%, 19%)')) // #083931
-console.log(extractColorNumber(' RGB(3%, 22%, 19%) ')) // 083931
+console.log(extractColorNumber('hello this is css spec #F2F xxx #ff00ff #fff'))
+console.log(extractColorNumber('#ff00ff'))
+console.log(extractColorNumber('rgb(1%, 100%, 90%)'))
+console.log(extractColorNumber('rgb(3,255,230)'))
+console.log(extractColorNumber('#ff22cc'))
+console.log(extractColorNumber('rgb(1, 100, 256)'))
+console.log(extractColorNumber('RGB(101%, 100%, 10%)'))
+console.log(extractColorNumber(' ma li pu RGB(3%, 22%, 19%)'))
+console.log(extractColorNumber(' RGB(3%, 22%, 19%) '))

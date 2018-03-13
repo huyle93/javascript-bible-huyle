@@ -51,4 +51,4 @@ console.log(waffle(30))
 
 
 // main
-console.log(`the time is ${ex_object.now}`)
+console.log(`the time is ${ex_object.now}`);
