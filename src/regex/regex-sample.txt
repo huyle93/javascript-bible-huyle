@@ -25,6 +25,10 @@ Phone number:
 Phone with code:
 
 ^\+?[\d\s]+\(?[\d\s]{10,}$
+
+zip code:
+^\d{5}(?:[-\s]\d{4})?$
+
 Year 1900-2099:
 
 ^(19|20)[\d]{2,2}$
