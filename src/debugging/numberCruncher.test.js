@@ -43,12 +43,12 @@ function factorsOf(n) {
 // Handling argument error
 it('should throw an exception for non-numerical data', () => {
     expect(() => factorsOf('twelve')).toThrow();
-    });
+});
 it('should throw an exception for negative numbers', () => {
     expect(() => factorsOf(-2)).toThrow();
-    });
+});
 it('should throw an exception for non-integer numbers', () => {
-expect(() => factorsOf(3.14159)).toThrow();
+    expect(() => factorsOf(3.14159)).toThrow();
 });
 
 // Test factorsOf()
@@ -97,4 +97,50 @@ test('2 is prime', () => {
 number (10) is given as an argument */
 test('10 is not prime', () => {
     expect(isPrime(10)).not.toBe(true);
+});
+
+/* tests and code needed to pass them for a function that calculates the factorial of its positive integer argument less than or equal to 21 
+Valid: value from 0 to 21
+Invalid: less than 0 and greater than 21
+*/
+
+function factorsOfGiven(n) {
+    if (Number.isNaN(Number(n))) {
+        throw new RangeError('Argument Error: Value must be an integer');
+    }
+    if (n < 0) {
+        throw new RangeError('Argument Error: Number must be positive');
+    }
+    if (n > 21) {
+        throw new RangeError('Argument Error: Number must be less than or equal to 21');
+    }
+    if (!Number.isInteger(n)) {
+        throw new RangeError('Argument Error: Number must be an integer');
+    }
+    const factors = [];
+    for (let i = 1, max = Math.sqrt(n); i <= max; i++) {
+        if (n % i === 0) {
+            factors.push(i, n / i);
+        }
+    }
+    return factors.sort((a, b) => a - b);
+}
+
+// Handling argument error
+it('should throw an exception for non-numerical data', () => {
+    expect(() => factorsOfGiven('twelve')).toThrow();
+});
+it('should throw an exception for negative numbers', () => {
+    expect(() => factorsOfGiven(-2)).toThrow();
+});
+it('should throw an exception for number greater than 21', () => {
+    expect(() => factorsOfGiven(22)).toThrow();
+});
+it('should throw an exception for non-integer numbers', () => {
+    expect(() => factorfactorsOfGivensOf(3.14159)).toThrow();
+});
+
+// Test factorsOf()
+test('factors of 21', () => {
+    expect(factorsOfGiven(21)).toEqual([1, 3, 7, 21]);
 });
