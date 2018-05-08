@@ -13,6 +13,7 @@ https.get(endpoint, (response) => {
     var data = JSON.parse(body)
     var cryptoPrice = Math.ceil(data[0].price_usd)
     var pricechange = data[0].percent_change_1h
+    console.log(body)
     console.log(`${symbol}'s price is: ${cryptoPrice}, percent change: ${pricechange}`)
   })
 })
