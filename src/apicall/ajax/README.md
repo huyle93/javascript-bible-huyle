@@ -104,7 +104,7 @@ Once a request has been properly configured, it can be sent to the server
 * * If you wish to send data with your request to be used in producing a dynamically generated document, pass that data as an argument to **send()**
 * * * **send()** accepts several types of data as an argument but the simplest possibility is a string representing a URL encoded query or JSON
 * * * When sending some types of data, you must first use the XMLHttpRequest object’s setRequestHeader() method to establish the proper **HTTP Content-type header** on the request
-* * If you need to alter the **MIME type** of the server’s response to fit your code’s expectations, you can invoke the request’s **overrideMimeType()** method with the desired MIME type expressed as a string argument ("application/json" is common)
+* * If you need to alter the **MIME type** "Multipurpose Internet Mail Extensions" of the server’s response to fit your code’s expectations, you can invoke the request’s **overrideMimeType()** method with the desired MIME type expressed as a string argument ("application/json" is common)
 * * * Remember to do this before you invole the **send()** method
 
 ## Awaiting a response
