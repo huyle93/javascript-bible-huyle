@@ -2,12 +2,15 @@
 
 Object oriented programming is a prevalent paradigm in JavaScript programming
 
-## Fundamental premises of OOP
-
+# Fundamental premises of OOP
 1. [Encapsulation](#encapsulation)
 2. [Inheritance](#inheritance)
 3. [Polymorphism](#polymorphism)
-
+***
+# Building Objects
+1. [Constructor Object](#constructor-object)
+***
+# Fundamental premises of OOP
 ## Encapsulation
 - Encapsulation is a fundamental premise of OOP
 - Encapsulation dictates that all the data and functionality that is necessary to represent an object should be collected together within an object and its inner workings hidden from the outside world that might need to use that object
@@ -284,8 +287,138 @@ c.__proto__.__proto__ // object {}, you get down to the base - bottom of prototy
 
 - Polymorphism is the idea that objects of different types may have identically named methods that provide similar functionality but may be implemented in different ways
 
+# Building Objects
+
+## Constructor Object
+
+*Although it’s common to construct objects using literal syntax, that approach doesn’t work well when we need to create several similar objects. For that purpose, it’s common to create a **constructor function** instead*
+
+### What is a constructor object/function?
+
+Constructor functions are typically not invoked directly, instead they are invoked as operands of the **new** operator (***new** keyword is an operator*)
+- By convention, constructor functions have identifiers that begin with an uppercase letter
+- The **new** operator generates a new empty base object and assigns a reference to that object to the keyword **this** within the constructor function’s body
+- The constructor function then typically adds properties and/or methods to the **this** object
+- As long as the constructor function doesn’t explicitly specify a return value, the **new** operator will cause it to return the reference contained in this
+
+*In common English: A function constructor is a normal function that is used to construct objects. The **this** variable points a new empty object, and that object is returned from the function automatically*
+ 
+Sample of a constructor function
+```js
+function Person() {
+  console.log(this) // Person {}
+  this.firstname = 'Huy';
+  this.lastname = 'Le';
+}
+
+var huy = new Person();
+console.log(huy); // Person {firstname: "Huy", lastname: "Le"}
+```
+### Constructor Function Parameters
+
+*Since constructor functions are just functions, they can accept parameters like any other function. Often the values passed as arguments are used to initialize the properties of the newly constructed object*
+
+Sample of constructor function with parameters
+```js
+function Person(firstname, lastname) {
+  this.firstname = firstname;
+  this.lastname = lastname;
+}
+
+var huy = new Person('Huy', 'Le');
+console.log(huy); // Person {firstname: "Huy", lastname: "Le"}
+
+var jane = new Person('Jane', 'Doe');
+console.log(jane); // Person {firstname: "Jane", lastname: "Doe"}
+```
+### Function - a special type of object
+
+- It has name (optional), can be anonymous
+- It has "invocable" () **code**
+- Every function you have ever written in JavaScript has a prototype property. It is there as an empty object, unless we have the function as **constructor function**
+
+*IMPORTANT: as soon as you invoke the function by the **new** operator, then it means something! It is there, it lives only when you use the function as a constructor*
+
+### Establishing a prototype
+
+*Constructor functions are just functions, and functions are just objects in JavaScript. All objects have prototypes except the base object*
+
+- Generally, functions' prototypes are not used
+- But, they are when a function is a **constructor function**
+- - However the function's prototype is not only the prototype of the function in this case
+- - It is also the prototype of any objects created using that function as a constructor function with the new operator
+- - When the **new** oeprator is used to invoke a constructor function, the prototype of the new empty object that is created is assigned a copy of the constructor function's prototype
+
+```js
+function Person(firstname, lastname) {
+  this.firstname = firstname;
+  this.lastname = lastname;
+}
+
+// now, huy and jane both get access to this new method of the prototype that created here
+Person.prototype.getFullName = function() {
+  return this.firstname + ' ' + this.lastname;
+}
+
+var huy = new Person('Huy', 'Le');
+console.log(huy); // Person {firstname: "Huy", lastname: "Le"}
+console.log(huy.getFullName()) // Huy Le
+
+var jane = new Person('Jane', 'Doe');
+console.log(jane); // Person {firstname: "Jane", lastname: "Doe"}
+console.log(jane.getFullName()) // Jane Doe
+
+// add one more method to the prototype
+Person.prototype.getFormalFullName = function() {
+  return this.lastname + ', ' + this.firstname;
+}
+
+console.log(huy.getFormalFullName());
+```
+#### **[Sample Establishing Prototype - establishing_prototype.js](./establishing_prototype.js)**
+
+### The greatness of the sample above
+1. Any object that created with this function, sometimes later I can add features to that object at once. If I created thousands of objects, I can give them all access to a new method even after they created.
+2. Properties are set up inside the constructor function, but methods are sitting on the prototype.
+3. ***Efficiency*** 
+- Function is object, it takes up memory spaces. We don't want to add many methods inside the constructor and waste memory space. 
+- If method **getFullName()** above is added inside the constructor, every object will have a copy of it. This takes a lot of memory space if we create thousands of object.
+- The solution here is to have the method as one copy at the prototype and every object can access to it. We only need one. When the object calls the method, the JavaScript engines will go down the prototype chain to find it. **Much more efficient!**
+
+### Object Create - Pure Prototypal Inheritance
+
+Constructor functions are intended to approximate the mechanics of classical inheritance
+
+- But there’s an alternative mechanism for creating new objects using prototypal inheritance
+- The base object constructor function (Object) has a **create()** method 
+- This method can be invoked with an existing object passed as its argument and it will return a reference to a new empty object that uses the passed object as its prototype
+- This can be considered ***“pure”*** **prototypal inheritance**
+
+
+```js
+var person = {
+  firstname: 'Default',
+  lastname: 'Default',
+  greet: function() {
+    return 'Hi ' + this.firstname;
+  }
+}
+
+// Pure Prototypal Inheritance
+// build the same thing, but a new way
+var john = Object.create(person);
+console.log(john.greet()); // Hi Default
+john.firstname = 'John';
+john.lastname = 'Doe';
+console.log(john); // { firstname: 'John', lastname: 'Doe' }
+console.log(john.greet()); // Hi John
+```
+#### **[Sample Pure Prototype Inheritance - create_object.js](./create_object.js)**
+
 ## Reference
 
 - JavaScript The Weird Parts - Udemy
+- [University of New Hampshire - IT605 Intermediate Web Development, Mike Gildersleeve](http://itcourses.cs.unh.edu/605/news)
+- [University of New Hampshire - IT704 Avanced Web Development, Mike Gildersleeve](http://itcourses.cs.unh.edu/704/news)
 - [Mozilla Developer - JavaScript, Inheritance vs Prototype Chain](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain)
 - [Encapsulation in JavaScript by Jason Shapiro](https://www.intertech.com/Blog/encapsulation-in-javascript/)
