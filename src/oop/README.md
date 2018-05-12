@@ -415,6 +415,18 @@ console.log(john.greet()); // Hi John
 ```
 #### **[Sample Pure Prototype Inheritance - create_object.js](./create_object.js)**
 
+## Working with Prototypes
+
+### Operands and Methods
+1. instanceOf
+2. isPrototypeOf()
+3. Object.getPrototypeOf() and Object.setPrototypeOf()
+4. hasOwnProperty() 
+5. propertyIsEnumerable() and propertyIsEnumerable() 
+6. Property Descriptor
+7. Getter and Setter in Object Literals and Constructors
+8. "This" keyword
+
 ## Reference
 
 - JavaScript The Weird Parts - Udemy
