@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Countdown</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        ul {
+            list-style-type: none;
+            background-color: #03f72c;
+        }
+
+        .invalid {
+            background-color: #c71f1f;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Countdown</h1>
+        <form id="myForm">
+            <div>
+                <label for="posint">Timer:</label>
+                <input type="text" id="input" name="posint">
+            </div>
+            <div class="controller">
+                <div class="button">
+                    <input id="start" type="submit" value="Start"></input>
+                </div>
+                <div class="button">
+                    <input id="pause" type="submit" value="Pause"></input>
+                </div>
+                <div class="button">
+                    <input id="cancel" type="submit" value="Cancel"></input>
+                </div>
+            </div>
+            <div id="errormsgs">
+                <ul id="warning">
+                    <h3 id="alert"></h3>
+                    <li id="posint_err"></li>
+                </ul>
+            </div>
+        </form>
+    </div>
+    <script src="main.js"></script>
+</body>
+
+</html>
