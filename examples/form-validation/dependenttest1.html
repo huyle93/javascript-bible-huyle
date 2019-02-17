@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>605</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="dependent.js"></script>
+    <style>
+        .disabled {
+            color: #aaa;
+        }
+
+        .normal {
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Form Checkbox</h1>
+        <div class="control-group">
+            <h3>I prefer to</h3>
+            <label class="">work in group
+                <input type="radio" name="type" value="group" />
+                <div class="control__indicator"></div>
+            </label>
+            <label class="">individual
+                <input type="radio" name="type" value="individual" />
+                <div class="control__indicator"></div>
+            </label>
+            <label>both
+                <input id="control" type="radio" name="type" value="both" />
+                <div class="control__indicator"></div>
+            </label>
+            <label id="depLabel1" class="dependent">I am more a group person
+                <input id="dependent1" type="radio" disabled="disabled" name="tf" value="true" />
+                <div class="control__indicator"></div>
+            </label>
+            <label id="depLabel2" class="dependent">I am more an individual person
+                <input id="dependent2" type="radio" disabled="disabled" name="tf" value="f" />
+                <div class="control__indicator"></div>
+            </label>
+        </div>
+    </div>
+</body>
+
+</html>

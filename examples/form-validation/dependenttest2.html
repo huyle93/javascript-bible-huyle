@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>605</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .disabled {
+            color: #aaa;
+        }
+
+        .normal {
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+<div>
+    <h1>Form 1 Radio</h1>
+    <div class="control-group">
+        <h3>How old is Earth</h3>
+        <label class="">400 GA
+            <input type="radio" name="age" value="false" />
+            <div class="control__indicator"></div>
+        </label>
+        <label class="">4.6 GA
+            <input type="radio" name="age" value="correct" />
+            <div class="control__indicator"></div>
+        </label>
+        <label>Earth has no age (Bonus Question)
+            <input id="control" type="radio" name="age" value="100" />
+            <div class="control__indicator"></div>
+        </label>
+        <label id="depLabel1" class="dependent">True
+            <input id="dependent1" type="radio" disabled="disabled" name="tf" value="true" />
+            <div class="control__indicator"></div>
+        </label>
+        <label id="depLabel2" class="dependent">False
+            <input id="dependent2" type="radio" disabled="disabled" name="tf" value="f" />
+            <div class="control__indicator"></div>
+        </label>
+    </div>
+</div>
+    <div>
+        <h1>Form 2</h1>
+        <div class="control-group">
+            <h3>Rate Your Teammate</h3>
+            <label class="">Good
+                <input type="radio" name="scale" value="good" />
+                <div class="control__indicator"></div>
+            </label>
+            <label class="">Average
+                <input type="radio" name="scale" value="avg" />
+                <div class="control__indicator"></div>
+            </label>
+            <label class="">Bad
+                <input type="radio" name="scale" value="bad" />
+                <div class="control__indicator"></div>
+            </label>
+            <label>I would leave a comment
+                <input id="controller" onclick="rateTeammate()" type="radio" name="scale" value="comment" />
+                <div class="control__indicator"></div>
+            </label>
+            <label id="depLabelComment" class="dependent">Comment
+                <input id="comment" type="text" disabled="disabled" />
+                <div class="control__indicator"></div>
+            </label>
+            <label id="depLabelPassword" class="dependent">Secret ID
+                <input id="password" type="password" disabled="disabled" />
+                <div class="control__indicator"></div>
+            </label>
+        </div>
+    </div>
+    <script src="dependent.js"></script>
+</body>
+
+</html>

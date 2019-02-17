@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>IT605</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Uncomment while testing this
+    <script src="validation.js"></script> -->
+    <style>
+        ul {
+            list-style-type: none;
+            background-color: #03f72c;
+        }
+
+        .invalid {
+            background-color: #c71f1f;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Form 1</h1>
+        <form id="myForm" action="http://amgilder.wcit.cs.unh.edu/cgi-bin/test403" method="post">
+            <div>
+                <label for="required">Required:</label>
+                <input type="text" id="required" name="required">
+            </div>
+            <div>
+                <label for="int">int:</label>
+                <input type="text" id="int" name="int">
+            </div>
+            <div>
+                <label for="posint">posint:</label>
+                <input type="text" id="posint" name="posint">
+            </div>
+            <div>
+                <label for="numeric">numeric:</label>
+                <input type="text" id="numeric" name="numeric">
+            </div>
+            <div>
+                <label for="zip">zip:</label>
+                <input type="text" id="zip" name="zip">
+            </div>
+            <div>
+                <label for="phone">phone:</label>
+                <input type="text" id="phone" name="phone">
+            </div>
+            <div>
+                <label for="email">email:</label>
+                <input type="text" id="email" name="email">
+            </div>
+            <div>
+                <label for="verify">verify email:</label>
+                <input type="text" id="verify" name="verify">
+            </div>
+            <div class="button">
+                <button type="submit">Send your message</button>
+            </div>
+            <div id="errormsgs">
+                <ul id="warning">
+                    <h3>Checklist</h3>
+                    <li id="required_err"></li>
+                    <li id="int_err"></li>
+                    <li id="posint_err"></li>
+                    <li id="numeric_err"></li>
+                    <li id="zip_err"></li>
+                    <li id="phone_err"></li>
+                    <li id="email_err"></li>
+                    <li id="verify_err"></li>
+                </ul>
+            </div>
+        </form>
+    </div>
+    <div>
+        <h1>Form 2</h1>
+        <form id="myForm2" action="http://amgilder.wcit.cs.unh.edu/cgi-bin/test403" method="post">
+            <div>
+                <label for="required">Name:</label>
+                <input type="text" id="name" name="name">
+            </div>
+            <div>
+                <label for="int">Age:</label>
+                <input type="text" id="age" name="age">
+            </div>
+            <div>
+                <label for="posint">Positive Number:</label>
+                <input type="text" id="posnum" name="posnum">
+            </div>
+            <div>
+                <label for="numeric">Any type of Number:</label>
+                <input type="text" id="anynum" name="anynum">
+            </div>
+            <div>
+                <label for="zip">zipcode:</label>
+                <input type="text" id="zipcode" name="zipcode">
+            </div>
+            <div>
+                <label for="phone">phone number:</label>
+                <input type="text" id="phonenum" name="phonenum">
+            </div>
+            <div>
+                <label for="email">email:</label>
+                <input type="text" id="email2" name="email2">
+            </div>
+            <div>
+                <label for="verify">verify email:</label>
+                <input type="text" id="verifyEmail2" name="verifyEmail2">
+            </div>
+            <div class="button">
+                <button type="submit">Send your message</button>
+            </div>
+            <div id="errormsgs2">
+                <ul id="warning2">
+                    <h3>Checklist</h3>
+                    <li id="err1"></li>
+                    <li id="err2"></li>
+                    <li id="err3"></li>
+                    <li id="err4"></li>
+                    <li id="err5"></li>
+                    <li id="err6"></li>
+                    <li id="err7"></li>
+                    <li id="err8"></li>
+                </ul>
+            </div>
+        </form>
+    </div>
+    <script src="validation.js"></script>
+</body>
+
+</html>
